@@ -10,7 +10,7 @@ def search(username: str, opt=''):
         res = req.json()
         if res:
             if opt:
-                ctx = {opt: i[opt] for i in res['UserSearchResults']}
+                ctx = dict(result=res['UserSearchResults'][0][opt])
                 return ctx
             return res['UserSearchResults'][0]
     except TypeError:
